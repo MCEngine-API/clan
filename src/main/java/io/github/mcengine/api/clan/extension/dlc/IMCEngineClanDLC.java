@@ -3,20 +3,30 @@ package io.github.mcengine.api.clan.extension.dlc;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents a DLC module that can be dynamically loaded into the MCEngine clan system.
+ * Represents a Clan-based DLC module that can be dynamically loaded into the MCEngine.
  * <p>
- * DLC modules typically contain new gameplay content, mechanics, or major feature expansions.
- * Implement this interface to allow your DLC module to be discovered and initialized by the MCEngine.
+ * Implement this interface to integrate downloadable content into the system.
  */
 public interface IMCEngineClanDLC {
 
     /**
-     * Called when the DLC module is loaded by the MCEngine.
-     * <p>
-     * Use this method to perform any setup or registration logic required
-     * for the DLC to function as intended.
+     * Called when the Clan DLC is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance providing context for this DLC module.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the Clan DLC is unloaded or disabled by the engine.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Clan DLC instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }

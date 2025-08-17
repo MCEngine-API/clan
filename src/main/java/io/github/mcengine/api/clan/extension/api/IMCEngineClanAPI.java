@@ -3,20 +3,30 @@ package io.github.mcengine.api.clan.extension.api;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents a clan-related DLC module that can be dynamically loaded into the MCEngine.
+ * Represents a Clan-based API module that can be dynamically loaded into the MCEngine.
  * <p>
- * Implement this interface to create a plugin extension that hooks into the clan system
- * provided by the MCEngine. The implementation should register its functionality within the {@link #onLoad(Plugin)} method.
+ * Implement this interface to provide clan-related APIs to the system.
  */
 public interface IMCEngineClanAPI {
 
     /**
-     * Called when the DLC module is loaded by the engine.
-     * <p>
-     * This method should be used to initialize any resources, register listeners,
-     * or perform setup logic necessary for the plugin extension to function correctly.
+     * Called when the Clan API is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance that is providing the context for this DLC module.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the Clan API is unloaded or disabled by the engine.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Clan API instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }

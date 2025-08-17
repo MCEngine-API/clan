@@ -3,20 +3,30 @@ package io.github.mcengine.api.clan.extension.skript;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents a skript-related DLC module that can be dynamically loaded into the MCEngine.
+ * Represents a Clan-based Skript module that can be dynamically loaded into the MCEngine.
  * <p>
- * This interface should be implemented by modules that provide backend or shared logic to the MCEngine,
- * typically not involving direct player interaction but supporting systems like storage, logic utilities, etc.
+ * Implement this interface to integrate scripted clan content into the system.
  */
 public interface IMCEngineClanSkript {
 
     /**
-     * Called when the DLC skript is loaded by the engine.
-     * <p>
-     * Use this method to perform initialization, resource registration, or dependency linking
-     * required for the skript to function correctly.
+     * Called when the Clan Skript module is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance providing context for this DLC module.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the Clan Skript module is unloaded or disabled by the engine.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Clan Skript instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }
